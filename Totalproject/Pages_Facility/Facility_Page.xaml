@@ -1,0 +1,44 @@
+﻿<Page x:Class="Totalproject.Pages_Facility.Facility_Page"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Totalproject.Pages_Facility"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Facility_Page">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Имя:" TextAlignment="Center" Grid.Row="0" VerticalAlignment="Top"/>
+        <TextBlock Text="Тип" TextAlignment="Center" Grid.Row="1" VerticalAlignment="Top"/>
+        <ComboBox x:Name="Type_of_Facility" Grid.Row="1" VerticalAlignment="Center" />
+        <TextBlock Text="Адрес" TextAlignment="Center" Grid.Row="2" VerticalAlignment="Top"/>
+        <TextBlock Text="Стоимость"  TextAlignment="Center" Grid.Row="3" VerticalAlignment="Top"/>
+        <TextBlock Text="Регион"  TextAlignment="Center" Grid.Row="4" VerticalAlignment="Top"/>
+        <TextBlock Text="Этажность"  TextAlignment="Center" Grid.Row="5" VerticalAlignment="Top"/>
+        <TextBox x:Name="Name_tbx" Grid.Row="0" VerticalAlignment="Center"/>
+        <TextBox x:Name="Adress" Grid.Row="2" VerticalAlignment="Center"/>
+        <TextBox x:Name="Price" Grid.Row="3" VerticalAlignment="Center"/>
+        <TextBox x:Name="Region" Grid.Row="4" VerticalAlignment="Center"/>
+        <TextBox x:Name="FloorAmount" Grid.Row="5" VerticalAlignment="Center"/>
+        <DataGrid x:Name="Facility_Grid" SelectionChanged="Facility_Grid_SelectionChanged" Grid.Column="1" Grid.RowSpan="5"/>
+        <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal">
+            
+            <Button x:Name="Select_Button" Click="Select_Button_Click" Content="Добавить" Margin="10,0,0,0" MinWidth ="100"/>
+            <Button x:Name="Update_Button" Click="Update_Button_Click" Content="Изменить" Margin="50,0,0,0" MinWidth ="100"/>
+            <Button x:Name="Delete_Button" Click="Delete_Button_Click" Content="Удалить" Margin="50,0,0,0" MinWidth ="100"/>
+        </StackPanel>
+    </Grid>
+</Page>
