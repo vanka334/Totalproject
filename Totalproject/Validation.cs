@@ -49,7 +49,7 @@ namespace Totalproject
                 tf = check.Any(x => Char.IsControl(x) || Char.IsWhiteSpace(x) || Char.IsPunctuation(x) || Char.IsLetter(x) || x == '=' || x == '+' || x == '*');
                 if (tf == false)
                 {
-                    if (Convert.ToInt32(check) < 0) { tf = true; MessageBox.Show("Вы ввели отрицательное число"); }
+                    if (Convert.ToDouble(check) < 0) { tf = true; MessageBox.Show("Вы ввели отрицательное число"); }
 
 
                 }
@@ -66,10 +66,10 @@ namespace Totalproject
             if (check == string.Empty) { tf = true; MessageBox.Show("Имеется пустое поле "); }
             else
             {
-                tf = check.Any(x => Char.IsControl(x) || Char.IsWhiteSpace(x) || Char.IsLetter(x) || x == '=' || x == '+' || x == '*');
+                tf = check.Any(x => Char.IsControl(x) || Char.IsSeparator(x) || Char.IsWhiteSpace(x) || Char.IsLetter(x) || x == '=' || x == '+' || x == '*' || x =='(' || x == ')' || x=='}' || x =='{' || x =='[' || x == ']');
                 if (tf == false)
                 {
-                    if (Convert.ToInt32(check) < 0) { tf = true; MessageBox.Show("Вы ввели отрицательное число"); }
+                    if (Convert.ToDouble(check) < 0) { tf = true; MessageBox.Show("Вы ввели отрицательное число"); }
 
 
                    
@@ -89,17 +89,14 @@ namespace Totalproject
             if (check == string.Empty) { tf = true; MessageBox.Show("Имеется пустое поле "); }
             else
             {
-                if (Convert.ToInt32(check) < 0) { tf = true; MessageBox.Show("Вы ввели отрицательное число"); }
-                else
-                {
-                    tf = check.Any(x => Char.IsControl(x) || Char.IsWhiteSpace(x) || Char.IsPunctuation(x) || Char.IsLetter(x) || x == '=' || x == '+' || x == '*');
+                    tf = check.Any(x => Char.IsControl(x) || Char.IsWhiteSpace(x) || Char.IsPunctuation(x) || Char.IsLetter(x) || x == '=' || x == '+' || x == '*' || x=='-');
                     if (tf == true)
                     {
                         MessageBox.Show("Вы использовали запрещенные символы ");
 
 
                     }
-                }
+                
             }
             return tf;
         }

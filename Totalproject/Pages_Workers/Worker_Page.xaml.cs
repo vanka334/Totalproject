@@ -68,7 +68,7 @@ namespace Totalproject.Pages_Workers
                 string id3 = Second_Name_tbx.Text;
                 if (Validation.validString(id3)) { return; }
                 if(Post.SelectedValue == null) {  MessageBox.Show("Введите комбобокс"); return;  }
-                int id4 = (int)Post.SelectedValue;
+                int id4 = Convert.ToInt32(Post.SelectedValue);
                 
                 if (Validation.validInt(Salary.ToString())) { return; }
                 decimal id5 = Convert.ToDecimal(Salary.Text);

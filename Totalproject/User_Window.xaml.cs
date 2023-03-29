@@ -49,12 +49,7 @@ namespace Totalproject
                         good = alltypes[i][1].ToString();
 
                     }
-                    else
-                    {
-                        MessageBox.Show("Не найдено");
-
-                    }
-
+            
 
                 }
 
