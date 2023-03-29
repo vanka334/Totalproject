@@ -53,6 +53,10 @@ namespace Totalproject.Pages_Products
 
 
             }
+            else
+            {
+                MessageBox.Show("Вы не выбрали элемент");
+            }
 
         }
 
@@ -63,6 +67,10 @@ namespace Totalproject.Pages_Products
                 int id = (int)(Type_of_Good_Grid.SelectedItem as DataRowView).Row[0];
                 tableAdapter.DeleteQuery(id);
                 Type_of_Good_Grid.ItemsSource = tableAdapter.GetData();
+            }
+            else
+            {
+                MessageBox.Show("Вы не выбрали элемент");
             }
         }
 

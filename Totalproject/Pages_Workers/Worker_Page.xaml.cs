@@ -44,10 +44,11 @@ namespace Totalproject.Pages_Workers
             string id3 = Second_Name_tbx.Text;
             if (Validation.validString(id3)) { return; }
 
-
+            if (Post.SelectedValue == null) { MessageBox.Show("Введите комбобокс"); return; }
             int id4 = (int)Post.SelectedValue;
             decimal id5 = Convert.ToDecimal(Salary.Text);
-            if (Validation.validInt(id5.ToString())) { return; }
+            if (Validation.validInt(id5.ToString())) { MessageBox.Show("Введите комбобокс"); return; }
+            if (Brigade.SelectedValue == null) { return; }
             int id6 = Convert.ToInt32(Brigade.SelectedValue);
             tableAdapter.InsertQuery(id1, id2, id3, id4,id5,id6);
             Worker_Grid.ItemsSource = tableAdapter.GetData();
@@ -66,7 +67,9 @@ namespace Totalproject.Pages_Workers
                 if (Validation.validString(id2)) { return; }
                 string id3 = Second_Name_tbx.Text;
                 if (Validation.validString(id3)) { return; }
+                if(Post.SelectedValue == null) {  MessageBox.Show("Введите комбобокс"); return;  }
                 int id4 = (int)Post.SelectedValue;
+                
                 if (Validation.validInt(Salary.ToString())) { return; }
                 decimal id5 = Convert.ToDecimal(Salary.Text);
                
@@ -76,6 +79,10 @@ namespace Totalproject.Pages_Workers
                 Worker_Grid.ItemsSource = tableAdapter.GetData();
 
 
+            }
+            else
+            {
+                MessageBox.Show("Вы не выбрали элемент");
             }
 
         }
@@ -87,6 +94,10 @@ namespace Totalproject.Pages_Workers
                 int id = (int)(Worker_Grid.SelectedItem as DataRowView).Row[0];
                 tableAdapter.DeleteQuery(id);
                 Worker_Grid.ItemsSource = tableAdapter.GetData();
+            }
+            else
+            {
+                MessageBox.Show("Вы не выбрали элемент");
             }
 
         }

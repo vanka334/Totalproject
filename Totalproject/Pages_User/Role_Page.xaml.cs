@@ -50,6 +50,10 @@ namespace Totalproject.Pages
 
 
             }
+            else
+            {
+                MessageBox.Show("Вы не выбрали элемент");
+            }
 
         }
 
@@ -61,6 +65,10 @@ namespace Totalproject.Pages
                 int id = (int)(Role_Grid.SelectedItem as DataRowView).Row[0];
                 tableAdapter.DeleteQuery(id);
                 Role_Grid.ItemsSource = tableAdapter.GetData();
+            }
+            else
+            {
+                MessageBox.Show("Вы не выбрали элемент");
             }
         }
 
@@ -79,12 +87,15 @@ namespace Totalproject.Pages
         private void Jsonchik_Click(object sender, RoutedEventArgs e)
         {
             List<Role_model> forimport = Deser.Deserializeobject<List<Role_model>>();
-            foreach (var item in forimport)
+            if (forimport != null)
             {
-                tableAdapter.InsertQuery(item.name_role);
+                foreach (var item in forimport)
+                {
+                    tableAdapter.InsertQuery(item.name_role);
+                }
+                Role_Grid.ItemsSource = null;
+                Role_Grid.ItemsSource = tableAdapter.GetData();
             }
-            Role_Grid.ItemsSource = null;
-            Role_Grid.ItemsSource = tableAdapter.GetData();
 
         }
     }

@@ -41,8 +41,10 @@ namespace Totalproject.Pages_Facility
 
         private void Select_Button_Click(object sender, RoutedEventArgs e)
         {
+            if (Id_Facility.SelectedValue == null) { MessageBox.Show("Вы не вырали комбобокс"); return; }
             int id = (int)Id_Facility.SelectedValue;
 
+            if (Id_Brigade.SelectedValue == null) { MessageBox.Show("Вы не вырали комбобокс"); return; }
             int id1 = (int)Id_Brigade.SelectedValue;
             tableAdapter.InsertQuery(id, id1);
             Brigade_Facility_Grid.ItemsSource = tableAdapter.GetData();
@@ -54,8 +56,15 @@ namespace Totalproject.Pages_Facility
             if (Brigade_Facility_Grid.SelectedItem != null)
             {
                 int id = (int)(Brigade_Facility_Grid.SelectedItem as DataRowView).Row[0];
+                if (Id_Facility.SelectedValue == null) { MessageBox.Show("Вы не вырали комбобокс"); return; }
+                if (Id_Brigade.SelectedValue == null) { MessageBox.Show("Вы не вырали комбобокс"); return; }
                 tableAdapter.UpdateQuery(Convert.ToInt32(Id_Facility.SelectedValue), Convert.ToInt32(Id_Brigade.SelectedValue), Convert.ToInt32(id));
                 Brigade_Facility_Grid.ItemsSource = tableAdapter.GetData();
+            }
+            else
+            {
+                MessageBox.Show("Вы не выбрали элемент");
+                return;
             }
 
         }
@@ -68,6 +77,11 @@ namespace Totalproject.Pages_Facility
                 int id = (int)(Brigade_Facility_Grid.SelectedItem as DataRowView).Row[0];
                 tableAdapter.DeleteQuery(id);
                 Brigade_Facility_Grid.ItemsSource = tableAdapter.GetData();
+            }
+            else
+            {
+                MessageBox.Show("Вы не выбрали элемент");
+                return;
             }
 
         }

@@ -44,7 +44,9 @@ namespace Totalproject.Pages_User
             string id2 = Password_Tbx.Text;
             if (Validation.validString(id2)) { return; }
             int id3 = (int)User_Id_Cbx.SelectedValue;
+            if(User_Id_Cbx.SelectedValue == null) { MessageBox.Show("Вы не вырали комбобокс"); return; }
             int id4 = (int)Role_Id_Cbx.SelectedValue;
+            if (Role_Id_Cbx.SelectedValue == null) { MessageBox.Show("Вы не вырали комбобокс"); return; }
 
             tableAdapter.InsertQuery(id1,id2,id3,id4);
             Login_Password_Grid.ItemsSource = tableAdapter.GetData();
@@ -62,11 +64,17 @@ namespace Totalproject.Pages_User
                 string id2 = Password_Tbx.Text;
                 if (Validation.validString(id2)) { return; }
                 int id3 = (int)User_Id_Cbx.SelectedValue;
+                if (User_Id_Cbx.SelectedValue == null) { MessageBox.Show("Вы не вырали комбобокс"); return; }
                 int id4 = (int)Role_Id_Cbx.SelectedValue;
+                if (Role_Id_Cbx.SelectedValue == null) { MessageBox.Show("Вы не вырали комбобокс"); return; }
                 tableAdapter.UpdateQuery( id1,id2,id3,id4,id);
                 Login_Password_Grid.ItemsSource = tableAdapter.GetData();
 
 
+            }
+            else
+            {
+                MessageBox.Show("Вы не выбрали элемент");
             }
 
         }
@@ -79,6 +87,10 @@ namespace Totalproject.Pages_User
                 int id = (int)(Login_Password_Grid.SelectedItem as DataRowView).Row[0];
                 tableAdapter.DeleteQuery(id);
                 Login_Password_Grid.ItemsSource = tableAdapter.GetData();
+            }
+            else
+            {
+                MessageBox.Show("Вы не выбрали элемент");
             }
 
         }

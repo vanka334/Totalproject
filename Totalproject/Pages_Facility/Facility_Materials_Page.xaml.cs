@@ -38,9 +38,15 @@ namespace Totalproject.Pages_Facility
         }
         private void Select_Button_Click(object sender, RoutedEventArgs e)
         {
+            if(Id_Facility.SelectedValue == null) { MessageBox.Show("Вы не вырали комбобокс"); return; }
             int id = (int)Id_Facility.SelectedValue;
+            if (Id_Materials.SelectedValue == null)
+            {
+                MessageBox.Show("Вы не вырали комбобокс");
+                return;
+            }
             int id1 = (int)Id_Materials.SelectedValue;
-            tableAdapter.InsertQuery(id, id1);
+                tableAdapter.InsertQuery(id, id1);
             Facility_Materials_Grid.ItemsSource = tableAdapter.GetData();
         }
 
@@ -49,8 +55,19 @@ namespace Totalproject.Pages_Facility
             if (Facility_Materials_Grid.SelectedItem != null)
             {
                 int id = (int)(Facility_Materials_Grid.SelectedItem as DataRowView).Row[0];
+                if (Id_Facility.SelectedValue == null) { MessageBox.Show("Вы не вырали комбобокс"); return; }
+                if (Id_Materials.SelectedValue == null)
+                {
+                    MessageBox.Show("Вы не вырали комбобокс");
+                    return;
+                }
                 tableAdapter.UpdateQuery(Convert.ToInt32(Id_Facility.SelectedValue), Convert.ToInt32(Id_Materials.SelectedValue), Convert.ToInt32(id));
                 Facility_Materials_Grid.ItemsSource = tableAdapter.GetData();
+            }
+            else
+            {
+                MessageBox.Show("Вы не выбрали элемент");
+                return;
             }
 
         }
@@ -62,6 +79,11 @@ namespace Totalproject.Pages_Facility
                 int id = (int)(Facility_Materials_Grid.SelectedItem as DataRowView).Row[0];
                 tableAdapter.DeleteQuery(id);
                 Facility_Materials_Grid.ItemsSource = tableAdapter.GetData();
+            }
+            else
+            {
+                MessageBox.Show("Вы не выбрали элемент");
+                return;
             }
         }
 

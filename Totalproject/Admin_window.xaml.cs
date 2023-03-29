@@ -150,9 +150,13 @@ namespace Totalproject
 
         }
 
-        private void Jsonchik_Click(object sender, RoutedEventArgs e)
-        {
+       
 
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            Window window = new MainWindow();
+            window.Show();  
+            Close();
 
         }
     }

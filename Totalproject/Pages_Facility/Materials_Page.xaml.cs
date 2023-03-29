@@ -66,6 +66,11 @@ namespace Totalproject
 
 
             }
+            else
+            {
+                MessageBox.Show("Вы не выбрали элемент");
+                return;
+            }
 
         }
 
@@ -76,6 +81,11 @@ namespace Totalproject
                 int id = (int)(Materials_Grid.SelectedItem as DataRowView).Row[0];
                 tableAdapter.DeleteQuery(id);
                 Materials_Grid.ItemsSource = tableAdapter.GetData();
+            }
+            else
+            {
+                MessageBox.Show("Вы не выбрали элемент");
+                return;
             }
 
 

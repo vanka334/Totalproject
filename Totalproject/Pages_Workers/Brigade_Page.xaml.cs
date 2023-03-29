@@ -51,6 +51,10 @@ namespace Totalproject.Pages_Workers
 
 
             }
+            else
+            {
+                MessageBox.Show("Вы не выбрали элемент");
+            }
 
         }
 
@@ -61,6 +65,10 @@ namespace Totalproject.Pages_Workers
                 int id = (int)(Brigade_Grid.SelectedItem as DataRowView).Row[0];
                 tableAdapter.DeleteQuery(id);
                 Brigade_Grid.ItemsSource = tableAdapter.GetData();
+            }
+            else
+            {
+                MessageBox.Show("Вы не выбрали элемент");
             }
         }
 
@@ -78,12 +86,15 @@ namespace Totalproject.Pages_Workers
         private void Jsonchik_Click(object sender, RoutedEventArgs e)
         {
             List<brigade_model> forimport = Deser.Deserializeobject<List<brigade_model>>();
-            foreach (var item in forimport)
+            if (forimport != null)
             {
-                tableAdapter.InsertQuery(item.name_brigade);
+                foreach (var item in forimport)
+                {
+                    tableAdapter.InsertQuery(item.name_brigade);
+                }
+                Brigade_Grid.ItemsSource = null;
+                Brigade_Grid.ItemsSource = tableAdapter.GetData();
             }
-            Brigade_Grid.ItemsSource = null;
-            Brigade_Grid.ItemsSource = tableAdapter.GetData();
 
         }
     }

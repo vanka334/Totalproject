@@ -44,6 +44,7 @@ namespace Totalproject.Pages
             if (Validation.validString(id3)) { return; }
 
             int id4 = Convert.ToInt32(Type_of_Role.SelectedValue);
+            if (Type_of_Role.SelectedValue == null) { MessageBox.Show("Введите комбобокс"); return; }
             tableAdapter.InsertQuery(id1, id2, id3,id4);
             User_Grid.ItemsSource = tableAdapter.GetData();
         }
@@ -60,12 +61,16 @@ namespace Totalproject.Pages
                 if (Validation.validString(id2)) { return; }
                 string id3 = Second_Name_Tbx.Text;
                 if (Validation.validString(id3)) { return; }
-
+                if (Type_of_Role.SelectedValue == null) { MessageBox.Show("Введите комбобокс"); return; }
                 int id4 = Convert.ToInt32(Type_of_Role.SelectedValue);
                 tableAdapter.UpdateQuery(id1, id2, id3, id4, id);
                 User_Grid.ItemsSource = tableAdapter.GetData();
 
 
+            }
+            else
+            {
+                MessageBox.Show("Вы не выбрали элемент");
             }
 
         }
@@ -77,6 +82,10 @@ namespace Totalproject.Pages
                 int id = (int)(User_Grid.SelectedItem as DataRowView).Row[0];
                 tableAdapter.DeleteQuery(id);
                 User_Grid.ItemsSource = tableAdapter.GetData();
+            }
+            else
+            {
+                MessageBox.Show("Вы не выбрали элемент");
             }
 
         }

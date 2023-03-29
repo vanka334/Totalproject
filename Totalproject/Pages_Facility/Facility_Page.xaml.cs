@@ -40,6 +40,7 @@ namespace Totalproject.Pages_Facility
             string id = Name_tbx.Text;
             if (Validation.validString(id)) { return; }
 
+            if (Type_of_Facility.SelectedValue == null) { MessageBox.Show("Вы не вырали комбобокс"); return; }
             int id2 = (int)Type_of_Facility.SelectedValue;
             string id3 = Adress.Text;
             if (Validation.validAdress(id3)) { return; }
@@ -64,6 +65,7 @@ namespace Totalproject.Pages_Facility
             {
                 string id1 = Name_tbx.Text;
                 if (Validation.validString(id1)) { return; }
+                if (Type_of_Facility == null) { MessageBox.Show("Вы не вырали комбобокс"); return; }
                 int id2 = (int)Type_of_Facility.SelectedValue;
                 string id3 = Adress.Text;
                 if (Validation.validString(id3)) { return; }
@@ -81,7 +83,12 @@ namespace Totalproject.Pages_Facility
                 tableAdapter.UpdateQuery(id1,id2,id3,id4,id5,id6,id);
                 Facility_Grid.ItemsSource = tableAdapter.GetData();
             }
-            
+            else
+            {
+                MessageBox.Show("Вы не выбрали элемент");
+                return;
+            }
+
 
 
         }
@@ -93,6 +100,11 @@ namespace Totalproject.Pages_Facility
                 int id = (int)(Facility_Grid.SelectedItem as DataRowView).Row[0];
                 tableAdapter.DeleteQuery(id);
                 Facility_Grid.ItemsSource = tableAdapter.GetData();
+            }
+            else
+            {
+                MessageBox.Show("Вы не выбрали элемент");
+                return;
             }
 
         }

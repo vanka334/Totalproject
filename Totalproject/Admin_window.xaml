@@ -24,7 +24,7 @@
         <Button x:Name="Workers_Btn" Click="Workers_Click" Content="Работники" Grid.Column="3" MinHeight="80" MinWidth="180" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Arial Black" FontSize="16"/>
         <ComboBox x:Name="Pages"  Grid.Row="1" MinHeight="30" MinWidth="100" VerticalAlignment="Top" HorizontalAlignment="Left" SelectionChanged="Pages_SelectionChanged"/>
         <Frame x:Name="Framik" Grid.Row="1" Grid.ColumnSpan="4"  Grid.RowSpan="2" VerticalAlignment="Bottom" MinHeight="300" NavigationUIVisibility="Hidden"/>
-        
+        <Button x:Name="Back" Content="Назад" Grid.Column="1" Grid.Row="1" Margin="10,0,10,143" Click="Back_Click"/>
 
 
     </Grid>

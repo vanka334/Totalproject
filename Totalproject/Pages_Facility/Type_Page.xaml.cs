@@ -50,6 +50,11 @@ namespace Totalproject.Pages_Facility
 
 
             }
+            else
+            {
+                MessageBox.Show("Вы не выбрали элемент");
+                return;
+            }
         }
 
         private void Delete_Button_Click(object sender, RoutedEventArgs e)
@@ -59,6 +64,11 @@ namespace Totalproject.Pages_Facility
                 int id = (int)(Type_Grid.SelectedItem as DataRowView).Row[0];
                 tableAdapter.DeleteQuery(id);
                 Type_Grid.ItemsSource = tableAdapter.GetData();
+            }
+            else
+            {
+                MessageBox.Show("Вы не выбрали элемент");
+                return;
             }
 
         }

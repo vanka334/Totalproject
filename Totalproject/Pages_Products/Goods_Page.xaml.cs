@@ -40,7 +40,9 @@ namespace Totalproject.Pages_Products
         }
         private void Select_Button_Click(object sender, RoutedEventArgs e)
         {
+            if (Type_of_Good.SelectedValue == null) { MessageBox.Show("Вы не вырали комбобокс"); return; }
             int id1 = (int)Type_of_Good.SelectedValue;
+            if (Object_Cbx.SelectedValue == null) { MessageBox.Show("Вы не вырали комбобокс"); return; }
             int id2 = (int)Object_Cbx.SelectedValue;
 
             if (Validation.validInt(Space.Text.ToString())) { return; }
@@ -61,7 +63,9 @@ namespace Totalproject.Pages_Products
             if (Goods_Grid.SelectedValue != null)
             {
                 int id = (int)(Goods_Grid.SelectedItem as DataRowView).Row[0];
+                if(Type_of_Good.SelectedValue == null) { MessageBox.Show("Вы не вырали комбобокс"); return; }
                 int id1 = (int)Type_of_Good.SelectedValue;
+                if (Object_Cbx.SelectedValue == null) { MessageBox.Show("Вы не вырали комбобокс"); return; }
                 int id2 = (int)Object_Cbx.SelectedValue;
                 if (Validation.validInt(Space.Text.ToString())) { return; }
                 decimal id3 = Convert.ToDecimal(Space.Text);
@@ -77,6 +81,10 @@ namespace Totalproject.Pages_Products
 
 
             }
+            else
+            {
+                MessageBox.Show("Вы не выбрали элемент");
+            }
         }
 
         private void Delete_Button_Click(object sender, RoutedEventArgs e)
@@ -86,6 +94,10 @@ namespace Totalproject.Pages_Products
                 int id = (int)(Goods_Grid.SelectedItem as DataRowView).Row[0];
                 tableAdapter.DeleteQuery(id);
                 Goods_Grid.ItemsSource = tableAdapter.GetData();
+            }
+            else
+            {
+                MessageBox.Show("Вы не выбрали элемент");
             }
         }
 

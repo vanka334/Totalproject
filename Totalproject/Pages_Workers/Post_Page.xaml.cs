@@ -48,6 +48,10 @@ namespace Totalproject.Pages_Workers
                 tableAdapter.UpdateQuery(id1, id);
                 Post_Grid.ItemsSource = tableAdapter.GetData();
             }
+            else
+            {
+                MessageBox.Show("Вы не выбрали элемент");
+            }
 
         }
 
@@ -58,6 +62,10 @@ namespace Totalproject.Pages_Workers
                 int id = (int)(Post_Grid.SelectedItem as DataRowView).Row[0];
                 tableAdapter.DeleteQuery(id);
                 Post_Grid.ItemsSource = tableAdapter.GetData();
+            }
+            else
+            {
+                MessageBox.Show("Вы не выбрали элемент");
             }
         }
 
@@ -75,12 +83,15 @@ namespace Totalproject.Pages_Workers
         private void Jsonchik_Click(object sender, RoutedEventArgs e)
         {
             List<post_model> forimport = Deser.Deserializeobject<List<post_model>>();
-            foreach(var item in forimport)
+            if (forimport != null)
             {
-                tableAdapter.InsertQuery(item.name_post);
+                foreach (var item in forimport)
+                {
+                    tableAdapter.InsertQuery(item.name_post);
+                }
+                Post_Grid.ItemsSource = null;
+                Post_Grid.ItemsSource = tableAdapter.GetData();
             }
-            Post_Grid.ItemsSource = null;
-            Post_Grid.ItemsSource = tableAdapter.GetData();
 
         }
     }
