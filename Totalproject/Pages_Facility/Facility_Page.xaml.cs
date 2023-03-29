@@ -66,7 +66,7 @@ namespace Totalproject.Pages_Facility
                 string id1 = Name_tbx.Text;
                 if (Validation.validString(id1)) { return; }
                 if (Type_of_Facility == null) { MessageBox.Show("Вы не вырали комбобокс"); return; }
-                int id2 = (int)Type_of_Facility.SelectedValue;
+                int id2 = Convert.ToInt32(Type_of_Facility.SelectedValue);
                 string id3 = Adress.Text;
                 if (Validation.validString(id3)) { return; }
                 decimal id4 = Convert.ToDecimal(Price.Text);

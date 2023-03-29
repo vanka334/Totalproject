@@ -42,10 +42,10 @@ namespace Totalproject.Pages_Facility
         private void Select_Button_Click(object sender, RoutedEventArgs e)
         {
             if (Id_Facility.SelectedValue == null) { MessageBox.Show("Вы не вырали комбобокс"); return; }
-            int id = (int)Id_Facility.SelectedValue;
+            int id = Convert.ToInt32(Id_Facility.SelectedValue);
 
             if (Id_Brigade.SelectedValue == null) { MessageBox.Show("Вы не вырали комбобокс"); return; }
-            int id1 = (int)Id_Brigade.SelectedValue;
+            int id1 = Convert.ToInt32(Id_Brigade.SelectedValue);
             tableAdapter.InsertQuery(id, id1);
             Brigade_Facility_Grid.ItemsSource = tableAdapter.GetData();
 

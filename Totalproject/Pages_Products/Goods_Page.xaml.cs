@@ -41,9 +41,9 @@ namespace Totalproject.Pages_Products
         private void Select_Button_Click(object sender, RoutedEventArgs e)
         {
             if (Type_of_Good.SelectedValue == null) { MessageBox.Show("Вы не вырали комбобокс"); return; }
-            int id1 = (int)Type_of_Good.SelectedValue;
+            int id1 = Convert.ToInt32(Type_of_Good.SelectedValue);
             if (Object_Cbx.SelectedValue == null) { MessageBox.Show("Вы не вырали комбобокс"); return; }
-            int id2 = (int)Object_Cbx.SelectedValue;
+            int id2 = Convert.ToInt32(Object_Cbx.SelectedValue);
 
             if (Validation.validInt(Space.Text.ToString())) { return; }
             decimal id3 = Convert.ToDecimal(Space.Text);
@@ -64,9 +64,9 @@ namespace Totalproject.Pages_Products
             {
                 int id = (int)(Goods_Grid.SelectedItem as DataRowView).Row[0];
                 if(Type_of_Good.SelectedValue == null) { MessageBox.Show("Вы не вырали комбобокс"); return; }
-                int id1 = (int)Type_of_Good.SelectedValue;
+                int id1 = Convert.ToInt32(Type_of_Good.SelectedValue);
                 if (Object_Cbx.SelectedValue == null) { MessageBox.Show("Вы не вырали комбобокс"); return; }
-                int id2 = (int)Object_Cbx.SelectedValue;
+                int id2 = Convert.ToInt32(Object_Cbx.SelectedValue);
                 if (Validation.validInt(Space.Text.ToString())) { return; }
                 decimal id3 = Convert.ToDecimal(Space.Text);
                 if (Validation.validInt(Rooms_tbx.Text.ToString())) { return; }

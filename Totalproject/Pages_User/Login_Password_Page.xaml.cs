@@ -63,9 +63,9 @@ namespace Totalproject.Pages_User
                 if (Validation.validString(id1)) { return; }
                 string id2 = Password_Tbx.Text;
                 if (Validation.validString(id2)) { return; }
-                int id3 = (int)User_Id_Cbx.SelectedValue;
+                int id3 = Convert.ToInt32(User_Id_Cbx.SelectedValue);
                 if (User_Id_Cbx.SelectedValue == null) { MessageBox.Show("Вы не вырали комбобокс"); return; }
-                int id4 = (int)Role_Id_Cbx.SelectedValue;
+                int id4 = Convert.ToInt32(Role_Id_Cbx.SelectedValue);
                 if (Role_Id_Cbx.SelectedValue == null) { MessageBox.Show("Вы не вырали комбобокс"); return; }
                 tableAdapter.UpdateQuery( id1,id2,id3,id4,id);
                 Login_Password_Grid.ItemsSource = tableAdapter.GetData();

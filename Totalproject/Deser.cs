@@ -15,6 +15,7 @@ namespace Totalproject
         public static T Deserializeobject<T>()
         {
             OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "json files(*.json)|*.json";
             if (dialog.ShowDialog() == true)
             {
                 string json = File.ReadAllText(dialog.FileName);
